@@ -1,7 +1,9 @@
 import cv2
-import sys
+import os
 
-cap = cv2.VideoCapture(sys.path[0]+"/video.mp4")
+# print(os.getcwd())
+
+cap = cv2.VideoCapture(os.getcwd()+"/video.mp4")
 
 while True:
     rel, frame = cap.read()
