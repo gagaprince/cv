@@ -18,25 +18,25 @@ while True:
     mask = bgsubmog.apply(blur)
 
     # 开操作
-    # open = cv2.morphologyEx(mask,cv2.MORPH_OPEN, kernel)
+    open = cv2.morphologyEx(mask,cv2.MORPH_OPEN, kernel)
 
     # 膨胀把车变大一些
-    # dilate = cv2.dilate(open,kernel,iterations=3)
+    dilate = cv2.dilate(open,kernel,iterations=3)
 
     # 闭操作
-    # close = cv2.morphologyEx(dilate,cv2.MORPH_CLOSE, kernel)
+    close = cv2.morphologyEx(dilate,cv2.MORPH_CLOSE, kernel)
 
     # 查找轮廓
-    # contours, hierarchy = cv2.findContours(close,cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    contours, hierarchy = cv2.findContours(close,cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
-    # i=0
-    # while i<len(contours):
-    #     x,y,w,h = cv2.boundingRect(contours[i]);
-    #     cv2.rectangle(frame, (x, y), (x+w, y+h), (255,255,0), 2)
-    #     i = i+1
+    i=0
+    while i<len(contours):
+        x,y,w,h = cv2.boundingRect(contours[i]);
+        cv2.rectangle(frame, (x, y), (x+w, y+h), (255,255,0), 2)
+        i = i+1
 
     cv2.imshow('video',frame)
-    cv2.imshow('video1',mask)
+    # cv2.imshow('video1',close)
 
     key = cv2.waitKey(1)
     if(key == 27):
